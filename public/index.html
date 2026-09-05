@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analytics Instagram</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <section>
+          <p class="eyebrow">Meta Graph API</p>
+          <h1>Analytics Instagram</h1>
+        </section>
+        <section class="actions">
+          <button id="connectButton" class="primary">Conectar Instagram</button>
+          <button id="collectButton" hidden>Coletar snapshot</button>
+          <button id="logoutButton" class="ghost" hidden>Desconectar</button>
+        </section>
+      </header>
+
+      <section id="setupPanel" class="setup">
+        <div>
+          <h2>Conexao</h2>
+          <p id="statusText">Verificando configuracao...</p>
+        </div>
+        <form id="tokenForm" class="token-form">
+          <label for="accessToken">Access token manual</label>
+          <div class="token-row">
+            <input
+              id="accessToken"
+              name="accessToken"
+              type="password"
+              autocomplete="off"
+              placeholder="Cole um token valido para testar localmente"
+            />
+            <button type="submit">Usar token</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="filters">
+        <label>
+          Desde
+          <input id="sinceInput" type="date" />
+        </label>
+        <label>
+          Ate
+          <input id="untilInput" type="date" />
+        </label>
+        <label>
+          Posts
+          <input id="limitInput" type="number" min="1" max="25" value="12" />
+        </label>
+        <button id="refreshButton">Atualizar</button>
+        <a class="export-link" href="/api/export/markdown" download>Markdown</a>
+        <a class="export-link" href="/api/export/json" download>JSON</a>
+        <a class="export-link" href="/api/export/csv" download>CSV</a>
+      </section>
+
+      <section id="message" class="message" hidden></section>
+
+      <section class="profile-strip">
+        <img id="profileImage" alt="" />
+        <div>
+          <p id="profileName" class="profile-name">Conta nao conectada</p>
+          <p id="profileMeta" class="muted">Conecte para carregar os dados.</p>
+        </div>
+      </section>
+
+      <section id="metricGrid" class="metric-grid"></section>
+
+      <section class="content-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Publicacoes recentes</h2>
+            <span id="mediaCount" class="muted">0 itens</span>
+          </div>
+          <div id="mediaList" class="media-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Avisos da API</h2>
+          </div>
+          <div id="warningsList" class="warnings">
+            <p class="muted">Sem avisos ate agora.</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel metadata-panel">
+        <div class="panel-head">
+          <h2>Metadados pendentes</h2>
+          <button id="loadMetadataButton">Carregar pendentes</button>
+        </div>
+        <div class="metadata-layout">
+          <section>
+            <h3>Midias</h3>
+            <div id="metadataList" class="metadata-list">
+              <p class="muted">Carregue os itens para editar tema, quadro e classificacoes.</p>
+            </div>
+          </section>
+          <section>
+            <h3>Stories</h3>
+            <div id="storyMetadataList" class="metadata-list">
+              <p class="muted">Carregue os stories para definir tipo_story.</p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel comments-panel">
+        <div class="panel-head">
+          <h2>Comentarios</h2>
+          <div class="panel-actions">
+            <button id="collectCommentsButton">Coletar comentarios</button>
+            <button id="loadCommentsButton">Carregar pendentes</button>
+          </div>
+        </div>
+        <div id="commentsList" class="comments-list">
+          <p class="muted">Colete ou carregue comentarios para responder manualmente.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

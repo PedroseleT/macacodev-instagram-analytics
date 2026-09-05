@@ -1,0 +1,29 @@
+{
+  "name": "analytics-instagram",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:init": "node src/cli.js init",
+    "collect": "node src/cli.js collect",
+    "comments:collect": "node src/cli.js comments:collect",
+    "comments:list": "node src/cli.js comments:list",
+    "classify:content": "node src/cli.js classify:content",
+    "classify:themes": "node src/cli.js classify:themes",
+    "dev": "node --watch src/server.js",
+    "export:csv": "node src/cli.js export --format=csv",
+    "export:json": "node src/cli.js export --format=json",
+    "export:md": "node src/cli.js export --format=markdown",
+    "export:growth": "node src/cli.js export:growth",
+    "metadata:list": "node src/cli.js metadata:list",
+    "story-metadata:list": "node src/cli.js story-metadata:list",
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  },
+  "devDependencies": {}
+}
